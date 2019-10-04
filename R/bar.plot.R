@@ -35,7 +35,7 @@ plot.bar <- function(df, x, y, fill, facet = NULL,
   plot <- df %>%
     ggplot2::ggplot(aes(x = {{x}}, y = {{y}}, fill = factor({{fill}}))) +
     ggplot2::geom_bar(stat="identity") +
-    ggplot2::geom_text(aes(label= round(n, digits = 1), y = n),
+    ggplot2::geom_text(aes(label= round({{y}}, digits = 1), y = {{y}}),
               position = position_dodge(width = 0.9),
               hjust = 0.5 , vjust= 1.5,
               color = 'white', size = 4) +
