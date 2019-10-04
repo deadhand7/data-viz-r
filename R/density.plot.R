@@ -55,7 +55,7 @@ plot.density <- function (df, x, fill = "#f07855", facet = NULL, position = "ide
                      else if (is.character(title)) {title}
                      else {element_blank()}) +
     ggplot2::labs(fill = glue::glue("{ggrapid::first_to_upper(rlang::quo_text(var_fill))}:"),
-                  x = x_lab, y = y_lab) +
+                  x = x.lab, y = y.lab) +
     ggplot2::labs(subtitle =
                     if (is.null(subtitle)) {element_blank()}
                   else {subtitle}) +

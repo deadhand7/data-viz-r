@@ -25,7 +25,7 @@
 
 plot.histogram <- function (df, x, fill = "#f07855", facet = NULL, binwidth = 5,
                             ticks = 10, angle = 0, title = TRUE, subtitle = NULL, caption = NULL,
-                            x_lab = "Value range", y_lab = "Density", suffix = '', legend.position = "none",
+                            x.lab = "Value range", y.lab = "Density", suffix = '', legend.position = "none",
                             quantile_low = 0, quantile_high = 1) {
 
   if (!is.data.frame(df)) stop("object must be a data frame")
@@ -57,7 +57,7 @@ plot.histogram <- function (df, x, fill = "#f07855", facet = NULL, binwidth = 5,
             else if (is.character(title)) {title}
             else {ggplot2::element_blank()}) +
     ggplot2::labs(fill = glue::glue("{ggrapid::first_to_upper(rlang::quo_text(var_fill))}:"),
-         x = x_lab, y = y_lab) +
+         x = x.lab, y = y.lab) +
     ggplot2::labs(subtitle =
            if (is.null(subtitle)) {ggplot2::element_blank()}
          else {subtitle}) +
