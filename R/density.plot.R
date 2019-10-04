@@ -65,7 +65,7 @@ plot.density <- function (df, x, fill = "#f07855", facet = NULL, position = "ide
     ggplot2::scale_x_continuous(limits = c(limits$min, limits$max),
                                 breaks = number_ticks(ticks)) +
     ggplot2::scale_y_continuous(breaks = number_ticks(ticks)) +
-    ggplot2::scale.fill.ep(palette = 'main') +
+    scale.fill.ep(palette = 'main') +
     tidyquant::theme_tq() +
     ggplot2::theme(legend.position = {{legend.position}},
                    panel.grid.minor = ggplot2::element_blank(),
