@@ -11,7 +11,7 @@
 
 ep.pal <- function(palette = "main", reverse = FALSE, ...) {
 
-  ep_colors <- c(
+  ep.colors <- c(
     `red`        = "#f07855",
     `blue`       = "#3d5167",
     `light green`= "#abd8ce",
@@ -21,16 +21,16 @@ ep.pal <- function(palette = "main", reverse = FALSE, ...) {
     `green`      = "#cbdd92"
   )
 
-  ep_cols <- function(...) {
+  ep.cols <- function(...) {
     cols <- c(...)
 
     if (is.null(cols))
-      return (ep_colors)
+      return (ep.colors)
 
-    ep_colors[cols]
+    ep.colors[cols]
   }
 
-  ep_palettes <- list(
+  ep.palettes <- list(
     `main`  = ep_cols("red", "blue"),
 
     `cool`  = ep_cols('light green', "purple", "light blue"),
@@ -42,9 +42,9 @@ ep.pal <- function(palette = "main", reverse = FALSE, ...) {
     `dark`  = ep_cols("blue", "purple")
   )
 
-  pal <- ep_palettes[[palette]]
+  pal <- ep.palettes[[palette]]
 
   if (reverse) pal <- rev(pal)
 
-  colorRampPalette(pal, ...)
+  grDevices::colorRampPalette(pal, ...)
 }

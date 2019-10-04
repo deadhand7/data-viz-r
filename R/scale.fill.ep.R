@@ -11,9 +11,10 @@
 #' @examples scale.fill.ep(palette = "main")
 
 scale.fill.ep <- function(palette = "main", discrete = TRUE, reverse = FALSE, ...) {
-  pal <- ep_pal(palette = palette, reverse = reverse)
 
-  if (discrete) {discrete_scale("fill", paste0("ep_", palette), palette = pal, ...)}
+  pal <- ep.pal(palette = palette, reverse = reverse)
 
-  else {scale_fill_gradientn(colours = pal(256), ...)}
+  if (discrete) {ggplot2::discrete_scale("fill", paste0("ep_", palette), palette = pal, ...)}
+
+  else {ggplot2::scale_fill_gradientn(colours = pal(256), ...)}
 }
