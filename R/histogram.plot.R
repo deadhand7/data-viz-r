@@ -45,8 +45,8 @@ plot.histogram <- function (df, x, fill = "#f07855", facet = NULL, binwidth = 5,
 
   limits <- df %>%
     dplyr::select(value = !!var_x) %>%
-    dplyr::summarise(min = stats::quantile(value, quantile_low[[1]], na.rm = TRUE),
-                     max = stats::quantile(value, quantile_high[[1]], na.rm = TRUE))
+    dplyr::summarise(min = stats::quantile(value, quantile.low[[1]], na.rm = TRUE),
+                     max = stats::quantile(value, quantile.high[[1]], na.rm = TRUE))
 
   plot <- df %>%
     ggplot2::ggplot(aes(x = {{x}})) +
