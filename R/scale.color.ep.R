@@ -8,7 +8,7 @@
 #' @keywords density
 #' @import ggplot2
 #' @export
-#' @examples scale_color_ep(palette = "main")
+#' @examples scale.color.ep(palette = "main")
 
 scale.color.ep <- function(palette = "main", discrete = TRUE, reverse = FALSE, ...) {
   pal <- ep_pal(palette = palette, reverse = reverse)
@@ -17,15 +17,5 @@ scale.color.ep <- function(palette = "main", discrete = TRUE, reverse = FALSE, .
     discrete_scale("colour", paste0("ep_", palette), palette = pal, ...)
   } else {
     scale_color_gradientn(colours = pal(256), ...)
-  }
-}
-
-scale_fill_ep <- function(palette = "main", discrete = TRUE, reverse = FALSE, ...) {
-  pal <- ep_pal(palette = palette, reverse = reverse)
-
-  if (discrete) {
-    discrete_scale("fill", paste0("ep_", palette), palette = pal, ...)
-  } else {
-    scale_fill_gradientn(colours = pal(256), ...)
   }
 }
