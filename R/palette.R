@@ -7,8 +7,8 @@
 #' @keywords palette
 #' @import ggplot2
 #' @export
-#' @examples
-#'
+#' @examples ep_pal(palette = "main")
+
 ep_pal <- function(palette = "main", reverse = FALSE, ...) {
 
   ep_colors <- c(

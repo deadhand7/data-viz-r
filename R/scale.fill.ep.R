@@ -1,4 +1,4 @@
-#' density plot
+#' ep scale fill
 #'
 #' @description This function creates ep formatted, standardized density plots.
 #' @param palette The color palette.
@@ -9,7 +9,6 @@
 #' @import ggplot2
 #' @export
 #' @examples scale.fill.ep(palette = "main")
-#'
 
 scale.fill.ep <- function(palette = "main", discrete = TRUE, reverse = FALSE, ...) {
   pal <- ep_pal(palette = palette, reverse = reverse)
