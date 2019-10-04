@@ -18,7 +18,7 @@
 #' @param quantile.high Select upper percentile for outliers exclusion. Defaults to 1.0\%.
 #' @return ggplot
 #' @keywords density
-#' @import dplyr, ggplot2, rlang
+#' @import dplyr, ggplot2, rlang, tidyquant
 #' @export
 #' @examples plot.density(df = df, x = x)
 
@@ -67,7 +67,7 @@ plot.density <- function (df, x, fill = "#f07855", facet = NULL, position = "ide
                                 breaks = number_ticks(ticks)) +
     ggplot2::scale_y_continuous(breaks = number_ticks(ticks)) +
     ggplot2::scale_fill_ep(palette = 'main') +
-    ggplot2::tidyquant::theme_tq() +
+    tidyquant::theme_tq() +
     ggplot2::theme(legend.position = {{legend.position}},
                    panel.grid.minor = element_blank(),
                    axis.text.x = element_text(angle = angle,
