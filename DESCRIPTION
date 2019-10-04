@@ -3,7 +3,7 @@ Type: Package
 Title: What the Package Does (Title Case)
 Version: 0.1.0
 Author: Chris Schulz
-Maintainer: chris.schulz@europace.de
+Maintainer: Chris Schulz <chris.schulz@europace.de>
 Description: The VizR package enables creation of common ggplot-based visualizations in a few lines of code applying the Europace color palette and europace fronts
 License: GPL-2
 Encoding: UTF-8
