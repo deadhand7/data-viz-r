@@ -31,15 +31,15 @@ ep.pal <- function(palette = "main", reverse = FALSE, ...) {
   }
 
   ep.palettes <- list(
-    `main`  = ep.colors("red", "blue"),
+    `main`  = ep_cols("red", "blue"),
 
-    `cool`  = ep.colors('light green', "purple", "light blue"),
+    `cool`  = ep_cols('light green', "purple", "light blue"),
 
-    `hot`   = ep.colors("yellow", "green", "red"),
+    `hot`   = ep_cols("yellow", "green", "red"),
 
-    `mixed` = ep.colors("red", "blue", "yellow", "purple", "'light green'"),
+    `mixed` = ep_cols("red", "blue", "yellow", "purple", "'light green'"),
 
-    `dark`  = ep.colors("blue", "purple")
+    `dark`  = ep_cols("blue", "purple")
   )
 
   pal <- ep.palettes[[palette]]
