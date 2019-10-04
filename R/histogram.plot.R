@@ -26,7 +26,7 @@
 plot.histogram <- function (df, x, fill = "#f07855", facet = NULL, binwidth = 5,
                             ticks = 10, angle = 0, title = TRUE, subtitle = NULL, caption = NULL,
                             x.lab = "Value range", y.lab = "Density", suffix = '', legend.position = "none",
-                            quantile_low = 0, quantile_high = 1) {
+                            quantile.low = 0, quantile.high = 1) {
 
   if (!is.data.frame(df)) stop("object must be a data frame")
 
