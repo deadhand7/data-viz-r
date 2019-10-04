@@ -1,10 +1,11 @@
-#' density plot
+#' histogram
 #'
-#' @description This function creates ep formatted, standardized density plots.
+#' @description This function creates ep formatted, standardized box plots.
 #' @param df A data frame.
-#' @param x A numerical variable to plot its density.
+#' @param x A numerical variable to plot.
 #' @param fill Select an additional grouping variable to be used for density plotting. Defaults to NULL.
 #' @param facet Select an additional faceting variable to create facets. Defaults to NULL.
+#' @param binwidth A numerical variable to determine the bin size.
 #' @param ticks Select the number of ticks on the x and y axis. Defaults to 10.
 #' @param angle Select the rotation angle for the x axis labels. Defaults to 0.
 #' @template title Should the plot title appear automatically. Defaults to TRUE.
@@ -12,19 +13,20 @@
 #' @param caption Text that is displayed on the caption. Defaults to NULL.
 #' @param x.lab Text that is displayed on the x axis. Defaults to "range".
 #' @param y.lab Text that is displayed on the y axis. Defaults to "Density".
+#' @param suffix Suffix added to  x-axis adn y-axis.
 #' @param legend.position Where should the plot legend appear. Defaults to "none".
 #' @param quantile.low Select lower percentile for outliers exclusion. Defaults to 0.0\%.
 #' @param quantile.high Select upper percentile for outliers exclusion. Defaults to 1.0\%.
 #' @return ggplot
-#' @keywords density
+#' @keywords box plot
 #' @import dplyr, ggplot2, rlang, tidyquant
 #' @export
-#' @examples plot.density(df = df, x = x)
+#' @examples plot.histogram(df = df, x = x, y = y)
 
-plot.density <- function (df, x, fill = "#f07855", facet = NULL, position = "identity",
-                          ticks = 10, angle = 0, title = TRUE, subtitle = NULL, caption = NULL,
-                          x.lab = "range", y.lab = "Density", legend.position = "none",
-                          quantile.low = 0, quantile.high = 1) {
+plot.histogram <- function (df, x, fill = "#f07855", facet = NULL, binwidth = 5,
+                            ticks = 10, angle = 0, title = TRUE, subtitle = NULL, caption = NULL,
+                            x_lab = "Value range", y_lab = "Density", suffix = '', legend.position = "none",
+                            quantile_low = 0, quantile_high = 1) {
 
   if (!is.data.frame(df)) stop("object must be a data frame")
 
@@ -47,25 +49,27 @@ plot.density <- function (df, x, fill = "#f07855", facet = NULL, position = "ide
                      max = stats::quantile(value, quantile_high[[1]], na.rm = TRUE))
 
   plot <- df %>%
-    ggplot2::ggplot() +
-    ggplot2::geom_density(aes(x = {{x}}, fill = {{fill}}), color = '#3d5167') +
+    ggplot2::ggplot(aes(x = {{x}})) +
+    ggplot2::geom_histogram(aes(fill = "#3d5167", color = {{fill}}), binwidth = {{binwidth}}) +
     ggplot2::geom_vline(aes(xintercept=median({{x}})), linetype = 2, size = 1, color = "#3d5167", alpha = 0.8) +
     ggplot2::ggtitle(label =
-                       if (title == TRUE) {glue::glue("Density Plot: {rlang::quo_text(var_x)}")}
-                     else if (is.character(title)) {title}
-                     else {element_blank()}) +
+              if (title == TRUE) {glue::glue("Histogramm: {rlang::quo_text(var_x)}")}
+            else if (is.character(title)) {title}
+            else {ggplot2::element_blank()}) +
     ggplot2::labs(fill = glue::glue("{ggrapid::first_to_upper(rlang::quo_text(var_fill))}:"),
-                  x = x_lab, y = y_lab) +
+         x = x_lab, y = y_lab) +
     ggplot2::labs(subtitle =
-                    if (is.null(subtitle)) {element_blank()}
-                  else {subtitle}) +
+           if (is.null(subtitle)) {ggplot2::element_blank()}
+         else {subtitle}) +
     ggplot2::labs(caption =
-                    if (is.null(caption)) {element_blank()}
-                  else {caption}) +
+           if (is.null(caption)) {ggplot2::element_blank()}
+         else {caption}) +
     ggplot2::scale_x_continuous(limits = c(limits$min, limits$max),
-                                breaks = number_ticks(ticks)) +
-    ggplot2::scale_y_continuous(breaks = number_ticks(ticks)) +
-    ggplot2::scale.fill.ep(palette = 'main') +
+                       breaks = number_ticks(ticks),
+                       labels = scales::number_format(suffix = {{suffix}}, prefix = "", big.mark = '.', decimal.mark = ',')) +
+    ggplot2::scale_y_continuous(breaks = number_ticks(ticks),
+                       labels = scales::number_format(suffix = {{suffix}}, prefix = "", big.mark = '.', decimal.mark = ',')) +
+    scale.color.ep(palette = 'main') +
     tidyquant::theme_tq() +
     ggplot2::theme(legend.position = {{legend.position}},
                    panel.grid.minor = ggplot2::element_blank(),
@@ -76,7 +80,7 @@ plot.density <- function (df, x, fill = "#f07855", facet = NULL, position = "ide
   if (!rlang::quo_is_null(var_facet)) {
 
     plot <- plot +
-      ggplot2::facet_wrap(rlang::quo_text(var_facet), scales = "free_x")
+      facet_wrap(rlang::quo_text(var_facet), scales = "free_x")
 
   }
 
