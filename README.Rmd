@@ -10,7 +10,7 @@ It is mandatory to install Europace fronts beforehand.
 
 ## Installation
 
-```{r, warning=FALSE, message=FALSE}
+```{r, warning=FALSE, message=FALSE, warning=FALSE, eval=FALSE}
 # install.packages("devtools")
 devtools::install_github("deadhand7/data-viz-r")
 ```
