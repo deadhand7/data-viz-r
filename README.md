@@ -1,12 +1,41 @@
 
 # DataVizR
 
+## Prerequisites
+
+It is mandatory to install Europace fronts beforehand.
+
 ## Installation
 
 ``` r
 # install.packages("devtools")
 devtools::install_github("deadhand7/data-viz-r")
 ```
+
+    ## 
+    ##   
+       checking for file ‘/private/var/folders/3k/blvv82wx4s51szc4cpw0gg0c0000gp/T/Rtmp02WQyc/remotes10c133ac5c216/deadhand7-data-viz-r-8d4c9e8/DESCRIPTION’ ...
+      
+    ✔  checking for file ‘/private/var/folders/3k/blvv82wx4s51szc4cpw0gg0c0000gp/T/Rtmp02WQyc/remotes10c133ac5c216/deadhand7-data-viz-r-8d4c9e8/DESCRIPTION’
+    ## 
+      
+    ─  preparing ‘DataVizR’:
+    ##    checking DESCRIPTION meta-information ...
+      
+    ✔  checking DESCRIPTION meta-information
+    ## 
+      
+    ─  checking for LF line-endings in source and make files and shell scripts
+    ## 
+      
+    ─  checking for empty or unneeded directories
+    ## 
+      
+    ─  building ‘DataVizR_0.1.0.tar.gz’
+    ## 
+      
+       
+    ## 
 
 ## Overview
 
