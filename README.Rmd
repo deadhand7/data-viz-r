@@ -4,6 +4,10 @@ output: github_document
 
 # DataVizR
 
+## Prerequisites
+
+It is mandatory to install Europace fronts beforehand.
+
 ## Installation
 
 ```{r, warning=FALSE, message=FALSE}
