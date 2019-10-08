@@ -8,9 +8,6 @@
 devtools::install_github("deadhand7/data-viz-r")
 ```
 
-    ## Skipping install of 'DataVizR' from a github remote, the SHA1 (09e7e297) has not changed since last install.
-    ##   Use `force = TRUE` to force installation
-
 ## Overview
 
 The package provides a palette based on Europace color codes and a

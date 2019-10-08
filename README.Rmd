@@ -6,7 +6,7 @@ output: github_document
 
 ## Installation
 
-```{r}
+```{r, warning=FALSE, message=FALSE}
 # install.packages("devtools")
 devtools::install_github("deadhand7/data-viz-r")
 ```
