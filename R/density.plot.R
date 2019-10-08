@@ -66,12 +66,7 @@ plot.density <- function (df, x, fill = "#f07855", facet = NULL, position = "ide
                                 breaks = number_ticks(ticks)) +
     ggplot2::scale_y_continuous(breaks = number_ticks(ticks)) +
     scale.fill.ep(palette = 'main') +
-    tidyquant::theme_tq() +
-    ggplot2::theme(legend.position = {{legend.position}},
-                   panel.grid.minor = ggplot2::element_blank(),
-                   axis.text.x = ggplot2::element_text(angle = angle, hjust = ifelse(angle != 0, 1, 0.5)),
-                   text = ggplot2::element_text(family = "Europace Sans Light"),
-                   plot.title = ggplot2::element_text(family = "Europace Sans Medium"))
+    ep.theme(legend.position = {{legend.position}}, angle = angle)
 
   if (!rlang::quo_is_null(var_facet)) {
 
