@@ -30,15 +30,6 @@ plot.histogram <- function (df, x, fill = "#f07855", facet = NULL, binwidth = 5,
 
   if (!is.data.frame(df)) stop("object must be a data frame")
 
-  number_ticks <- function(n = 10) {
-
-    if (!is.numeric(n))
-      stop("n must be a numeric input")
-
-    function(limits) {pretty(limits, n)}
-
-  }
-
   var_x     <- rlang::enquo(x)
   var_fill  <- rlang::enquo(fill)
   var_facet <- rlang::enquo(facet)
@@ -65,19 +56,12 @@ plot.histogram <- function (df, x, fill = "#f07855", facet = NULL, binwidth = 5,
            if (is.null(caption)) {ggplot2::element_blank()}
          else {caption}) +
     ggplot2::scale_x_continuous(limits = c(limits$min, limits$max),
-                       breaks = number_ticks(ticks),
+                       breaks = scale.ticks(ticks),
                        labels = scales::number_format(suffix = {{suffix}}, prefix = "", big.mark = '.', decimal.mark = ',')) +
-    ggplot2::scale_y_continuous(breaks = number_ticks(ticks),
+    ggplot2::scale_y_continuous(breaks = scale.ticks(ticks),
                        labels = scales::number_format(suffix = {{suffix}}, prefix = "", big.mark = '.', decimal.mark = ',')) +
     scale.color.ep(palette = 'main') +
     ep.theme(legend.position = {{legend.position}}, angle = angle)
-
-    # tidyquant::theme_tq() +
-    # ggplot2::theme(legend.position = {{legend.position}},
-    #                panel.grid.minor = ggplot2::element_blank(),
-    #                axis.text.x = ggplot2::element_text(angle = angle, hjust = ifelse(angle != 0, 1, 0.5)),
-    #                text = ggplot2::element_text(family = "Europace Sans Medium"),
-    #                plot.title = ggplot2::element_text(family = "Europace Sans Medium"))
 
   if (!rlang::quo_is_null(var_facet)) {
 
