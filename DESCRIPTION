@@ -5,11 +5,12 @@ Version: 0.1.0
 Author: Chris Schulz
 Maintainer: Chris Schulz <chris.schulz@europace.de>
 Description: The VizR package enables creation of common ggplot-based visualizations in a few lines of code applying the Europace color palette and europace fronts
-License: GPL-2
+License: MIT
 Encoding: UTF-8
 LazyData: true
 URL: https://github.com/deadhand7/data-viz-r
 BugReports: https://github.com/deadhand7/data-viz-r/issues
 Depends: R (>= 3.6.1)
-Imports: dplyr, rlang, tidyr, ggplot2, tidyquant, grDevices
+Imports: dplyr, rlang, tidyr, ggplot2, tidyquant, grDevices, extrafont
+LinkingTo: http://github.com/europace
   
