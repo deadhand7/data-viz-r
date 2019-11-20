@@ -51,8 +51,11 @@ plot.bar <- function(df, x, y, fill, facet = NULL,
     ggplot2::labs(caption =
            if (is.null(caption)) {ggplot2::element_blank()}
          else {caption}) +
-    ggplot2::scale_y_continuous(labels = scales::number_format(suffix = {{suffix}}, prefix = "", big.mark = '.', decimal.mark = ',')) +
+    ggplot2::scale_y_continuous(labels = scales::number_format(suffix = {{suffix}}, prefix = "", big.mark = '.', decimal.mark = ','),
+                                limits = c(0, max_y*1.2)) +
     scale.fill.ep(palette = 'main') +
+    ep.theme(legend.position = {{legend.position}}, angle = angle) +
+    geom_hline(yintercept = 0) +
     ep.theme(legend.position = {{legend.position}}, angle = angle)
 
   if (!rlang::quo_is_null(var_facet)) {
