@@ -32,6 +32,8 @@ plot.bar <- function(df, x, y, fill, facet = NULL,
   var_fill  <- rlang::enquo(fill)
   var_facet <- rlang::enquo(facet)
 
+  max_y     <- df %>% dplyr::summarise(max = max({{y}}, na.rm = TRUE)) %>% dplyr::pull()
+
   plot <- df %>%
     ggplot2::ggplot(aes(x = {{x}}, y = {{y}}, fill = factor({{fill}}))) +
     ggplot2::geom_bar(stat="identity") +
